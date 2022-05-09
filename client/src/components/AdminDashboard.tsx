@@ -1,4 +1,3 @@
-import NewVacation from "./NewVacation";
 import { useState, useEffect, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +7,7 @@ import { setUser } from "../features/userSlice";
 import { setVacations } from "../features/vacationsSlice";
 import { Button } from "@mui/material";
 import VacationCard from "./VacationCard";
+import CreateVacation from "./CreateVacation";
 
 const AdminDashboard = () => {
     const dispatch = useDispatch();
@@ -54,7 +54,7 @@ const AdminDashboard = () => {
             <Button onClick={handleClickOpen} style={{ width: "90%" }} variant="contained" color="primary">
                 new vacation
             </Button>
-            <NewVacation open={open} handleClose={handleClose} />
+            <CreateVacation open={open} handleClose={handleClose} />
             <br /><br />
             {vacations.map((vacation: any) => (<VacationCard key={vacation.id} vacation={vacation} />))}
         </div>
