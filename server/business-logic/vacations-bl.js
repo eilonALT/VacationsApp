@@ -9,7 +9,7 @@ const getVacation = async (id) => {
 
 const addVacation = async (body) => {
     return await vacationsDal.addVacation(
-        body.description, body.img, body.location, body.startTime, body.endTime, body.price, body.followers)
+        body.description, body.img, body.location, body.startTime.slice(0,10), body.endTime.slice(0,10), +body.price, +body.followers)
 }
 
 const deleteVacation = async (id) => {
@@ -18,7 +18,7 @@ const deleteVacation = async (id) => {
 
 const updateVacation = async (id, body) => {
     return await vacationsDal.updateVacation(
-        id, body.description, body.img, body.location, body.startTime, body.endTime, body.price, body.followers)
+        id, body.description, body.img, body.location, body.startTime.slice(0,10), body.endTime.slice(0,10), body.price, +body.followers)
 }
 export {
     getVacations,
