@@ -1,9 +1,12 @@
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
-import { useEffect } from 'react';
+import EditIcon from '@mui/icons-material/Edit';
+import { useEffect, useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setVacations } from '../features/vacationsSlice';
+import UpdateVacation from "./UpdateVacation";
+
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -11,10 +14,22 @@ const VacationCard = (props: any) => {
     const dispatch = useDispatch();
     const user = useSelector((state: any) => state.user.value);
     const vacations = useSelector((state: any) => state.vacations.value);
+    let userjson: any = localStorage.getItem("user");
+    const localstorageUser = JSON.parse(userjson);
+    const [openUpdateVac, setOpenUpdateVac] = useState(false);
+
+    const handleClickOpenUpdateVac = () => {
+        setOpenUpdateVac(true);
+    };
+
+    const handleCloseUpdateVac = useCallback(() => {
+        setOpenUpdateVac(false);
+    }, []);
+
 
     const handleFollow = (e: any) => {
-        let newVacation = {...props.vacation};
-        
+        let newVacation = { ...props.vacation };
+
         if (e.target.checked) {
             fetch(`http://localhost:5000/api/vacations/${props.vacation.id}`, {
                 method: 'PUT',
@@ -52,7 +67,11 @@ const VacationCard = (props: any) => {
     return (
         <div style={{ fontSize: "smaller" }} key={`key is -${props.id}`} className="VacationCard">
             <div className="VacationCard__image_container">
-                <Checkbox onClick={(e) => { handleFollow(e) }} style={{ position: "absolute", left: "90%" }} {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+                {localstorageUser.role === 'admin' ?
+                    <EditIcon onClick={(e) => { handleClickOpenUpdateVac() }} style={{ position: "absolute", left: "90%", cursor: "pointer" }}></EditIcon>
+                    :
+                    <Checkbox onClick={(e) => { handleFollow(e) }} style={{ position: "absolute", left: "90%" }} {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+                }
                 <img className="VacationCard__image" src={`https://1.bp.blogspot.com/-grP9aKaecSE/T2REJiVs04I/AAAAAAAAByo/8ucODDyrfvY/s1600/rome+2.jpg`} alt="" />
             </div>
             <div className="VacationCard__content">
@@ -67,6 +86,7 @@ const VacationCard = (props: any) => {
                 </div>
                 <p>{`price: ${props.vacation.price}$ ,  followers: ${props.vacation.followers}`}</p>
             </div>
+            <UpdateVacation open={openUpdateVac} handleClose={handleCloseUpdateVac} vacation={props.vacation} />
         </div>
     )
 }

@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  mysqldb:
+    image: mysql:5.7
+    restart: unless-stopped
+    volumes:
+      - db:/var/lib/mysql
+      - ./data.sql:/docker-entrypoint-initdb.d/start.sql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=vacation
+    ports:
+      - "3306:3306"
+    networks:
+      - backend
+
+  eilon-api:
+    depends_on:
+      - mysqldb
+    build: ./server
+    restart: unless-stopped
+    ports:
+      - "5050:5050"
+    networks:
+      - backend
+      - frontend
+  eilon-ui:
+    depends_on:
+      - eilon-api
+    build: ./client
+    ports:
+      - 8888:80
+    networks:
+      - frontend
+volumes:
+  db:
+networks:
+  backend:
+  frontend:

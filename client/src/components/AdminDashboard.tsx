@@ -14,16 +14,15 @@ const AdminDashboard = () => {
     const user = useSelector((state: any) => state.user.value);
     const vacations = useSelector((state: any) => state.vacations.value);
     const navigate = useNavigate();
-    const [open, setOpen] = useState(false);
+    const [openNewVac, setOpenNewVac] = useState(false);
 
-    const handleClickOpen = () => {
-        setOpen(true);
+    const handleClickOpenNewVac = () => {
+        setOpenNewVac(true);
     };
-
-    const handleClose = useCallback(() => {
-        setOpen(false);
-    }, []);
-
+  
+    const handleCloseNewVac = useCallback(() => {
+        setOpenNewVac(false);
+    }, []); 
 
 
     const handleLogout = () => {
@@ -51,10 +50,10 @@ const AdminDashboard = () => {
             </button>
             <br /><br />
             <h2>Vacations</h2>
-            <Button onClick={handleClickOpen} style={{ width: "90%" }} variant="contained" color="primary">
+            <Button onClick={handleClickOpenNewVac} style={{ width: "90%" }} variant="contained" color="primary">
                 new vacation
             </Button>
-            <CreateVacation open={open} handleClose={handleClose} />
+            <CreateVacation open={openNewVac} handleClose={handleCloseNewVac} />
             <br /><br />
             {vacations.map((vacation: any) => (<VacationCard key={vacation.id} vacation={vacation} />))}
         </div>
