@@ -1,7 +1,7 @@
 # VACATION APP 
 
-This is a ***full-stack*** project which include both Front and Back development technologies, running on ***docker-containers*** enviroment.
-The app let a client to create a user and follow a vactions created and maintianed by an admin dashboard (also implemented).
+This is a ***full-stack*** project which include both Front and Back development technologies, running on ***docker-containers*** environment.
+The app let a client to create a user and follow vacations created and maintained  by an admin dashboard (also implemented).
 The project supports __private routing__ and __manage state__ with ***Redux-toolkit***,also supports real time information with ***web socket***.
 
 
@@ -10,6 +10,7 @@ The project supports __private routing__ and __manage state__ with ***Redux-tool
 ### FRONT-END
 - React.js
 - Redux toolkit
+- MUI
 
 ### BACK-END
 - Node.js
