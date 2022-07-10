@@ -30,6 +30,9 @@ The project supports __private routing__ and __manage state__ with ***Redux-tool
 ```
 ### Without Docker:
 
+You will need to change the ./server/database.js file to your own database configurations
+and than:
+
 You will need two terminals
 terminal 1:
 ```sh
