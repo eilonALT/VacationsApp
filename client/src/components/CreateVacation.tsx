@@ -43,7 +43,7 @@ export default function NewVacation(props: any) {
             alert("Please enter all fields");
         }
         else {
-            fetch(`http://localhost:5000/api/vacations`, {
+            fetch(`http://ec2-18-193-46-49.eu-central-1.compute.amazonaws.com:5000/api/vacations`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

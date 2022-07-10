@@ -19,21 +19,6 @@ function App() {
 
   const [messages, setMessages] = useState("");
 
-  const handelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    socket.emit('change', e.target.value);
-    setMessages(e.target.value);
-  }
-
-  useEffect(() => {
-    console.log('App.tsx: useEffect()');
-    console.log(user);
-    socket.on('changed', (data: string) => {
-      console.log('App.tsx: socket.on("changed")');
-      console.log(data);
-      setMessages(data);
-    })
-  }, [user]);
-
   return (
     <BrowserRouter>
       <div className="App">

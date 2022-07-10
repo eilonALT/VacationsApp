@@ -13,14 +13,14 @@ const server = http.createServer(app);
 app.use('/api', vacationRouter)
 app.use('/api', UsersRouter)
 
+
 const io = new Server(server,
     {
         cors: {
-            origin: 'http://localhost:3000',
-            methods: 'GET, POST, PUT, DELETE'
+            origin: '*',
+            methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
         }
-    }
-);
+    });
 
 io.on('connection', (socket) => {
     console.log(`New user connected with id: ${socket.id}`)

@@ -1,8 +1,10 @@
--- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `vacation` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `vacation`;
+-- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: vacation
+-- Host: localhost    Database: vacation
 -- ------------------------------------------------------
--- Server version	8.0.28
+-- Server version	8.0.29
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,7 +33,7 @@ CREATE TABLE `users` (
   `role` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `userName` (`userName`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +42,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'eilon','alter','admin','$2b$10$FTAof5adfRKswk6AADh39OMFkXvO1GBbi599Cr6A08pwqeNzL8Ifm','admin'),(5,'dotan','alter','dotan','$2b$10$lwMGK/XaGJ1kcyYl9F4aeOn3Zs6YblkpoX0JJ1dXKPfd0lwZR64Ha','user'),(7,'dotan','dotan','dotan2','$2b$10$qtJANwx3nBkiZL9Rys.DteRocVVoRmncOy6aylXSraXNm76XNrKaK','user'),(9,'dotan','dotan','dotan3','$2b$10$BQm9MEP5apMSN10YIQMRHuugjHrEVVgkohVBYFFNYSua.ax7dyKBq','user'),(11,'dotan','dotan','dotan4','$2b$10$rEMcYvq/Mg4fc89BCHgFS.cc4xcCErqFHAR9COS4SPvjrX17uha5.','user'),(12,'dotan','dotan','dotan5','$2b$10$Btwktn7K/XC6dSlJ00fX3uKGkVJz1xQGM11BPFqaqfe.f4q.iI9NC','user'),(13,'dotan','dotan','dotan6','$2b$10$YGPu83eiPtDRaLQxLLadquPBkDIMkAOcC80jw4BPc3CvwgsGbvkNa','user'),(14,'eilon','eilon','eilon1','$2b$10$A01IgnPqx0xHYBZdjRPuGuCYbnSQ01Th3rTX9AKP.iIzz8UhOfUOm','user'),(15,'eilon','eilon','eilon2','$2b$10$H/pOvK/y517Ng1omKzjSduhZUCfLkylD7DUZOkXezAC8AYYtVdLQe','user'),(16,'eilon','eilon','eilon3','$2b$10$W2sOsRAxxyXiWAUUh5iBpeGXQZNtKwIHzM0K0xD5eKhk7CeJE67vi','user'),(17,'eilon','eilon','eilon6','$2b$10$C4NmNd5CE2H/0cLlLCBZz..7b4bneHniqiPWfAGBPPROdbtOoJPiq','user'),(18,'eilon','eilon','eilon7','$2b$10$/o.ELXIP8iWHUgZ8QD0OueTBbOsM245p1wDoHnNiT9Gp2lA8Q9FVS','user');
+INSERT INTO `users` VALUES (1,'eilon','alter','admin','$2b$10$FTAof5adfRKswk6AADh39OMFkXvO1GBbi599Cr6A08pwqeNzL8Ifm','admin'),(5,'dotan','alter','dotan','$2b$10$lwMGK/XaGJ1kcyYl9F4aeOn3Zs6YblkpoX0JJ1dXKPfd0lwZR64Ha','user'),(7,'dotan','dotan','dotan2','$2b$10$qtJANwx3nBkiZL9Rys.DteRocVVoRmncOy6aylXSraXNm76XNrKaK','user'),(9,'dotan','dotan','dotan3','$2b$10$BQm9MEP5apMSN10YIQMRHuugjHrEVVgkohVBYFFNYSua.ax7dyKBq','user'),(11,'dotan','dotan','dotan4','$2b$10$rEMcYvq/Mg4fc89BCHgFS.cc4xcCErqFHAR9COS4SPvjrX17uha5.','user'),(12,'dotan','dotan','dotan5','$2b$10$Btwktn7K/XC6dSlJ00fX3uKGkVJz1xQGM11BPFqaqfe.f4q.iI9NC','user'),(13,'dotan','dotan','dotan6','$2b$10$YGPu83eiPtDRaLQxLLadquPBkDIMkAOcC80jw4BPc3CvwgsGbvkNa','user'),(14,'eilon','eilon','eilon1','$2b$10$A01IgnPqx0xHYBZdjRPuGuCYbnSQ01Th3rTX9AKP.iIzz8UhOfUOm','user'),(15,'eilon','eilon','eilon2','$2b$10$H/pOvK/y517Ng1omKzjSduhZUCfLkylD7DUZOkXezAC8AYYtVdLQe','user'),(16,'eilon','eilon','eilon3','$2b$10$W2sOsRAxxyXiWAUUh5iBpeGXQZNtKwIHzM0K0xD5eKhk7CeJE67vi','user'),(17,'eilon','eilon','eilon6','$2b$10$C4NmNd5CE2H/0cLlLCBZz..7b4bneHniqiPWfAGBPPROdbtOoJPiq','user'),(18,'eilon','eilon','eilon7','$2b$10$/o.ELXIP8iWHUgZ8QD0OueTBbOsM245p1wDoHnNiT9Gp2lA8Q9FVS','user'),(22,'eilon','alter','eiloneilon','$2b$10$42mPno8/HurYixApu2PfdeJeOtCX3xo3YmLHMnDVCPemGrV.ehl5K','user');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,4 +85,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-29 23:51:14
+-- Dump completed on 2022-07-10 17:31:27

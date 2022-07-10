@@ -1,37 +1,48 @@
 version: '3.8'
 services:
   mysqldb:
-    image: mysql:5.7
+    image: mysql
     restart: unless-stopped
-    volumes:
-      - db:/var/lib/mysql
-      - ./data.sql:/docker-entrypoint-initdb.d/start.sql
     environment:
       - MYSQL_ROOT_PASSWORD=123456
-      - MYSQL_DATABASE=vacation
+      - MYSQL_DATABASE=music-system
+    volumes:
+      - db:/var/lib/mysql
+      - ./data.sql:/docker-entrypoint-initdb.d/data.sql #run data.sql when start
     ports:
-      - "3306:3306"
+      - "3307:3306"
+    healthcheck:
+      # api will wait for mysql to be ready - and complete the test
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
     networks:
       - backend
-
-  eilon-api:
+  api:
     depends_on:
-      - mysqldb
+      mysqldb:
+        condition: service_healthy # api will wait for mysql to be ready
     build: ./server
     restart: unless-stopped
     ports:
-      - "5050:5050"
+      - "5000:5000"
     networks:
       - backend
       - frontend
-  eilon-ui:
+    volumes:
+      - ./server:/server
+  ui:
     depends_on:
-      - eilon-api
+      - api
     build: ./client
+    restart: unless-stopped
     ports:
-      - 8888:80
+      - "3000:3000"
     networks:
+      - backend
       - frontend
+    volumes:
+      - ./client:/client
 volumes:
   db:
 networks:
