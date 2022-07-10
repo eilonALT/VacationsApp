@@ -22,6 +22,14 @@ The project supports __private routing__ and __manage state__ with ***Redux-tool
 - SQL
 
 ## installtion:
+
+### With Docker:
+
+```sh
+1. docker-compose up
+```
+### Without Docker:
+
 You will need two terminals
 terminal 1:
 ```sh
